@@ -35,5 +35,28 @@ namespace OOPExam
 
             }
         }
+        public static void StartExam()
+        {
+            string YesOrNo;
+            bool isValid = false;
+
+            do
+            {
+                Console.WriteLine("Do you want to start the Exam now? (yes or no): ");
+                YesOrNo = Console.ReadLine()?.Trim().ToLower();
+
+                isValid = YesOrNo == "yes" || YesOrNo == "no";
+
+                if (!isValid)
+                {
+                    Console.WriteLine("Invalid input. Please enter 'yes' or 'no'.");
+                }
+
+            } while (!isValid);
+            if (YesOrNo.Equals("yes", StringComparison.OrdinalIgnoreCase))
+            {
+                Exam.showExam();
+            }
+        }
     }
 }

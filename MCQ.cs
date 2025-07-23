@@ -10,7 +10,7 @@ namespace OOPExam
     {
        
         public static Answer[] answerList { get; set; }=new Answer[4];
-        public int CorrectAnswerId { get; set; }
+        public static int CorrectAnswerId { get; set; }
 
         public static void CreateMcqQuesion()
         {
@@ -47,7 +47,7 @@ namespace OOPExam
             Console.WriteLine();
             #endregion
 
-            #region Take Choices
+            #region Take Question Choices
             Console.WriteLine("Enter the Choices:");
             string choice = "";
             for (int i = 0; i < answerList.Length; i++)
@@ -77,13 +77,17 @@ namespace OOPExam
             {
                 Console.WriteLine("Enter the Correct AnswerId (1:4) : ");
                 isParsed=int.TryParse(Console.ReadLine(),out CorrAns);
-            } while (!isParsed || CorrAns <=1 ||CorrAns >=4 );
-
+            } while (!isParsed || CorrAns <1 ||CorrAns >4 );
+            CorrectAnswerId= CorrAns;
             #endregion
 
 
         }
-
+        public static bool checkAnswer(int userAns)
+        {
+            if(userAns==CorrectAnswerId) return true;
+            return false;
+        }
     }
 
 }

@@ -10,7 +10,8 @@ namespace OOPExam
     {
 
         public static List<Question> mcqQuestions { get; set; } = new List<Question>();
-        public static Answer[] mcqAnswerList { get; set; } = new Answer[4];
+        public static List<Answer> mcqAnswerList { get; set; } = new List<Answer>();
+        public static string[] mcqChoices { get; set; } = new string[4];
 
 
         public void CreateMcqQuesion()
@@ -70,10 +71,12 @@ namespace OOPExam
 
                 } while (!isValid);
 
-
-                mcqAnswerList[i] = new Answer() { answerText = choice, answerID = (i + 1) };
+                mcqChoices[i] = choice;
                 
             }
+            mcqAnswerList.Add(new Answer(mcqChoices)); // problem (The latest object override the old one (cause the array is ref type which affects the old data when you recive new data on it)?)
+            mcqChoices = new string[4]; // this line solved the previous by making a new ref
+
             #endregion
             // works properly , do not touch it
             #region Determine The CorrectAnsId

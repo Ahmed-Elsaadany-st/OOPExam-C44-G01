@@ -52,8 +52,9 @@ namespace OOPExam
             } while (!flag || numberOfQuestions < 1 || numberOfQuestions > 20);
             NumberOfQuestions = numberOfQuestions;
             Console.WriteLine();
+            #endregion 
         }
-            #endregion        
+
 
         public static void showExam()
         {
@@ -68,7 +69,7 @@ namespace OOPExam
             {
 
                 Console.WriteLine($" {i + 1}]: {MCQ.mcqQuestions[i]}");
-                for (int j = 0; j < 4; j++)
+                for (int j = i; j < i+1; j++)
                 {
                     Console.WriteLine($"{MCQ.mcqAnswerList[j]}");
                 }

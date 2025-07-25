@@ -8,9 +8,24 @@ namespace OOPExam
 {
     internal class Question
     {
-        public static  string Header { get; set; }
-        public static string Body { get; set; }
-        public static int Mark { get; set; }
+        public   string Header { get; set; }
+        public  string Body { get; set; }
+        public  int Mark { get; set; }
+        public Question()
+        {
+            
+        }
+        public Question(string header,string body,int mark)
+        {
+            Header=header;
+            Body=body;
+            Mark=mark;
+        }
+
+        public override string ToString()
+        {
+            return $"  {Body} :Mark{Mark} ";
+        }
 
 
     }

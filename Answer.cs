@@ -10,5 +10,10 @@ namespace OOPExam
     {
         public int answerID {  get; set; }
         public string answerText {  get; set; }
+        public override string ToString()
+        {
+
+            return $"{answerID} - {answerText} ";
+        }
     }
 }

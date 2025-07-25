@@ -8,19 +8,14 @@ namespace OOPExam
 {
     internal class PracticalExam : Exam
     {
-        public MCQ mcqQuestion { get; set; }
+         MCQ mcq =new MCQ();
 
         
 
-       public static void CreateQuesions()
+       public  void CreateQuesion()
         {
-            Console.WriteLine("In Pracical Exam there is only MCQ Quesions");
-            int counter = 1;
-            do
-            {
-                MCQ.CreateMcqQuesion();
-                counter++;
-            } while (counter <= Exam.NumberOfQuestions);
+            mcq.CreateMcqQuesion();
+            
 
         }
     }

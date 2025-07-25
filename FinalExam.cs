@@ -7,12 +7,18 @@ using System.Threading.Tasks;
 namespace OOPExam
 {
     internal class FinalExam : Exam
-    { 
+    {
+        
+        MCQ mcq=new MCQ();
+
+        TrueOrFalse TorF=new TrueOrFalse();
+
+       
         public MCQ mcqQuestion { get; set; }
         public TrueOrFalse TrueOrFalseQustion { get; set; }
 
         
-        public static void CreatQuestion()
+        public  void CreatQuestion()
         {
             bool flag=false;
             int input;
@@ -25,21 +31,14 @@ namespace OOPExam
             Console.WriteLine();
             if (input == 1)
             {
-                int counter = 1;
-                do
-                {
-                    MCQ.CreateMcqQuesion();
-                    counter++;
-                }while(counter<FinalExam.NumberOfQuestions);
+              
+                    mcq.CreateMcqQuesion();
             }
             if (input == 2)
             {
-                int counter = 1;
-                do
-                {
-                    TrueOrFalse.CreateTrueOrFalseQuestion(); // needs to be built
-                    counter++;
-                }while(counter<FinalExam.NumberOfQuestions);
+                
+                    TorF.CreateTrueOrFalseQuestion(); // needs to be built
+                
             }
 
         }

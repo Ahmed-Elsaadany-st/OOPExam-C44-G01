@@ -8,14 +8,16 @@ namespace OOPExam
 {
     internal class MCQ:Question
     {
-       
-        public static Answer[] answerList { get; set; }=new Answer[4];
-        public static int CorrectAnswerId { get; set; }
 
-        public static void CreateMcqQuesion()
+        public static List<Question> mcqQuestions { get; set; } = new List<Question>();
+        public static Answer[] mcqAnswerList { get; set; } = new Answer[4];
+
+
+        public void CreateMcqQuesion()
         {
-            Header = "MCQ Quesion";
-            Console.WriteLine(Header);
+            string header = "MCQ Quesion";
+            
+          
             #region Take Body as an input
             bool isValid = false;
             string body;
@@ -31,11 +33,12 @@ namespace OOPExam
 
             }
             while (!isValid);
-            Body = body;
+          
             Console.WriteLine();
             #endregion
 
             #region Take Mark as an input
+            
             bool flag = false;
             int mark = 0;
             do
@@ -43,14 +46,16 @@ namespace OOPExam
                 Console.WriteLine("Enter the mark (1:5) ");
                 flag = int.TryParse(Console.ReadLine(), out mark);
             } while (!flag || mark > 5 || mark < 1);
-            Mark = mark;
+            Exam.AllMarks.Add(mark);
+            
+           
             Console.WriteLine();
             #endregion
-
-            #region Take Question Choices
+           mcqQuestions.Add(new Question(header,body,mark)); // works properly do not touch 
+            #region Take Question Choices 
             Console.WriteLine("Enter the Choices:");
-            string choice = "";
-            for (int i = 0; i < answerList.Length; i++)
+            string choice;
+            for (int i = 0; i <4; i++)
             {
                 do
                 {
@@ -65,29 +70,31 @@ namespace OOPExam
 
                 } while (!isValid);
 
-                answerList[i] = new Answer() { answerText = choice, answerID = (i + 1) };
 
+                mcqAnswerList[i] = new Answer() { answerText = choice, answerID = (i + 1) };
+                
             }
             #endregion
-
+            // works properly , do not touch it
             #region Determine The CorrectAnsId
+
             int CorrAns;
-            bool isParsed= false;
-            do
-            {
-                Console.WriteLine("Enter the Correct AnswerId (1:4) : ");
-                isParsed=int.TryParse(Console.ReadLine(),out CorrAns);
-            } while (!isParsed || CorrAns <1 ||CorrAns >4 );
-            CorrectAnswerId= CorrAns;
+                bool isParsed = false;
+                
+                do
+                {
+                    Console.WriteLine("Enter the Correct AnswerId (1:4) : ");
+                    isParsed = int.TryParse(Console.ReadLine(), out CorrAns);
+                } while (!isParsed || CorrAns < 1 || CorrAns > 4);
+                Exam.CorrectAnswerIds.Add(CorrAns);
+           
+
+            
             #endregion
 
+        }
+        
 
-        }
-        public static bool checkAnswer(int userAns)
-        {
-            if(userAns==CorrectAnswerId) return true;
-            return false;
-        }
     }
 
 }

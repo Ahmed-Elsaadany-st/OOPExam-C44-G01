@@ -4,8 +4,11 @@
     {
         static void Main(string[] args)
         {
-          ExamLogicLayer.StartCreating();
+            ExamLogicLayer examLogicLayer = new ExamLogicLayer();
+          examLogicLayer.StartCreating();
+            Console.Clear();
            ExamLogicLayer.StartExam();
+            ExamLogicLayer.ShowYourMark();
         }
     }
 }

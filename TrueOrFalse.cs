@@ -8,10 +8,11 @@ namespace OOPExam
 {
     internal class TrueOrFalse:Question
     {
-        public required List<Answer> answerList { get; set; }
+
+        public  List<Answer> answerList { get; set; }
         public int rightAnswerId { get; set; }
 
-        public static void CreateTrueOrFalseQuestion()
+        public  void CreateTrueOrFalseQuestion()
         {
 
         }

@@ -77,7 +77,7 @@ namespace OOPExam
                 int chosenAns;
                 do
                 {
-                    Console.Write($"Your Answer: ");
+                    Console.Write($"Your Answer(1:4): ");
                     isParsed = int.TryParse(Console.ReadLine(), out chosenAns);
                 } while (!isParsed || chosenAns < 1 || chosenAns > 4);
                 ChosenAnswers.Add(chosenAns);

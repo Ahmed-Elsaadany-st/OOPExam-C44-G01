@@ -8,6 +8,7 @@
           examLogicLayer.StartCreating();
             Console.Clear();
            ExamLogicLayer.StartExam();
+            Console.Clear();
             ExamLogicLayer.ShowYourMark();
         }
     }

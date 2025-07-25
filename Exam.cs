@@ -60,6 +60,7 @@ namespace OOPExam
         {
 
             showMCQ();
+            showTorF();
         }
         public static void showMCQ()
         {
@@ -83,6 +84,28 @@ namespace OOPExam
                 } while (!isParsed || chosenAns < 1 || chosenAns > 4);
                 ChosenAnswers.Add(chosenAns);
                 Console.WriteLine();
+            }
+           
+        }
+        public static void showTorF()
+        {
+            Console.WriteLine("True Or False Questions");
+            for (int i = 0; i < TrueOrFalse.TorFQuestions.Count; i++)
+            {
+                Console.WriteLine($" {i + 1}]: {TrueOrFalse.TorFQuestions[i]}");
+                Console.WriteLine($"{TrueOrFalse.TorFChoices}");
+                //recive the choice
+                bool isParsed = false;
+                int chosenAns;
+                do
+                {
+                    Console.Write($"Your Answer(1 or 2): ");
+                    isParsed = int.TryParse(Console.ReadLine(), out chosenAns);
+                } while (!isParsed || chosenAns < 1 || chosenAns > 4);
+                ChosenAnswers.Add(chosenAns);
+                Console.WriteLine();
+
+
             }
         }
         public static int CheckAnswer(List<int> chosenAnswer)

@@ -77,8 +77,8 @@ namespace OOPExam
             } while (!isValid);
             if (YesOrNo.Equals("yes", StringComparison.OrdinalIgnoreCase))
             {
-                Exam.showExam();
                 stopwatch.Start();
+                Exam.showExam();
             }
 
         }
@@ -108,30 +108,30 @@ namespace OOPExam
                 Console.WriteLine($"Time taken: {stopwatch.Elapsed.TotalMinutes:F2} minutes.");
             }
         }
-        //public static void ShowWrongQuestions()
-        //{
-        //    string YesOrNo;
-        //    bool isValid = false;
+        public static void ShowWrongQuestions()
+        {
+            string YesOrNo;
+            bool isValid = false;
 
-        //    do
-        //    {
-        //        Console.WriteLine("Do you want to Show your Wrong Answers ? (yes or no): ");
-        //        YesOrNo = Console.ReadLine()?.Trim().ToLower();
+            do
+            {
+                Console.WriteLine("Do you want to Show your Wrong Answers ? (yes or no): ");
+                YesOrNo = Console.ReadLine()?.Trim().ToLower();
 
-        //        isValid = YesOrNo == "yes" || YesOrNo == "no";
+                isValid = YesOrNo == "yes" || YesOrNo == "no";
 
-        //        if (!isValid)
-        //        {
-        //            Console.WriteLine("Invalid input. Please enter 'yes' or 'no'.");
-        //        }
+                if (!isValid)
+                {
+                    Console.WriteLine("Invalid input. Please enter 'yes' or 'no'.");
+                }
 
-        //    } while (!isValid);
-        //    if (YesOrNo.Equals("yes", StringComparison.OrdinalIgnoreCase))
-        //    {
-        //        //Exam.WrongQuestions();
-        //    }
+            } while (!isValid);
+            if (YesOrNo.Equals("yes", StringComparison.OrdinalIgnoreCase))
+            {
+                Exam.WrongQuestions();
+            }
 
 
-        //}
+        }
     }
 }

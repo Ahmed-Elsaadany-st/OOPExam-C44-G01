@@ -26,10 +26,6 @@ namespace OOPExam
 
         public static int ExamFullMark = 0;
 
-
-
-
-
         public static void CreatExam()
         {
             #region Determine Time And Number Of Questions
@@ -88,7 +84,8 @@ namespace OOPExam
         }
         public static void showTorF()
         {
-            Console.WriteLine("True Or False Questions");
+            //Console.WriteLine("True Or False Questions");
+
             for (int i = 0; i < TrueOrFalse.TorFQuestions.Count; i++)
             {
                 Console.WriteLine($" {i + 1}]: {TrueOrFalse.TorFQuestions[i]}");
@@ -119,7 +116,7 @@ namespace OOPExam
                 }
                 else
                 {
-                    WrongAnsIds.Add(i+1); // Number of the question that you choosed a wrong ans in.
+                    WrongAnsIds.Add(i); // index of the question that you choosed a wrong ans in.
                 }
 
             }
@@ -129,15 +126,15 @@ namespace OOPExam
         {
             return $" Your Mark Is {CheckAnswer(ChosenAnswers)} Out Of {ExamFullMark}";
         }
-        //public static void WrongQuestions()
-        //{
-        //    //for (int i = 0; i < WrongAnsIds.Count; i++)
-        //    //{
-        //    //    Console.WriteLine($"Question number{WrongAnsIds[i]}] ");
-        //    //    Console.WriteLine($"Your Answer=> {ChosenAnswers[WrongAnsIds[i]]}");
-        //    //    Console.WriteLine($"The Correct Answer {ChosenAnswers[WrongAnsIds[i]]}");
-        //    //}
-        //}
+        public static void WrongQuestions()
+        {
+            for (int i = 0; i < WrongAnsIds.Count; i++)
+            {
+                Console.WriteLine($"Question number{WrongAnsIds[i]}] ");
+                Console.WriteLine($"Your Answer=> {ChosenAnswers[WrongAnsIds[i]]}");
+                Console.WriteLine($"The Correct Answer {CorrectAnswerIds[WrongAnsIds[i]]}");
+            }
+        }
 
 
 

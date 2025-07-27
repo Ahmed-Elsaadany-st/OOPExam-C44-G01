@@ -45,7 +45,8 @@ namespace OOPExam
             {
                Exam.CreatExam();
                 Console.Clear();
-                Console.WriteLine("Please Create All MCQ Questions First,Then Create True or False Questions");
+                //Console.WriteLine("Please Create All MCQ Questions First,Then Create True or False Questions");
+                // no need for the previous line the problem the problen it wrote for was handeld.
                 Console.WriteLine();
                 int counter = 0;
                 do
@@ -102,7 +103,7 @@ namespace OOPExam
             } while (!isValid);
             if (YesOrNo.Equals("yes", StringComparison.OrdinalIgnoreCase))
             {
-                Console.WriteLine(Exam.ShowMark());
+                Console.WriteLine(Exam.showMark());
                 stopwatch.Stop();
                 Console.WriteLine("Exam ended.");
                 Console.WriteLine($"Time taken: {stopwatch.Elapsed.TotalMinutes:F2} minutes.");
@@ -128,7 +129,8 @@ namespace OOPExam
             } while (!isValid);
             if (YesOrNo.Equals("yes", StringComparison.OrdinalIgnoreCase))
             {
-                Exam.WrongQuestions();
+                Exam.mcqWrongQuestions();
+                Exam.TorFWrongQuestions();
             }
 
 

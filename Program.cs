@@ -10,7 +10,7 @@
            ExamLogicLayer.StartExam();
             Console.Clear();
             ExamLogicLayer.ShowYourMark();
-            //ExamLogicLayer.ShowWrongQuestions();
+            ExamLogicLayer.ShowWrongQuestions();
         }
     }
 }

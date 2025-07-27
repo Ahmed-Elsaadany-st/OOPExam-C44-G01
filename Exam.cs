@@ -24,7 +24,8 @@ namespace OOPExam
         // storing the marks so i can give full mark when i compare correct ans with choesn ans and find it true.
         public static List<int>WrongAnsIds { get; set; } =new List<int>();
 
-        public static int ExamFullMark = 0;
+        //public static int ExamFullMark = 0;
+        public static int examFullMark = 0;
 
         public static void CreatExam()
         {
@@ -49,7 +50,6 @@ namespace OOPExam
             Console.WriteLine();
             #endregion 
         }
-
 
         public static void showExam()
         {
@@ -78,6 +78,7 @@ namespace OOPExam
                     isParsed = int.TryParse(Console.ReadLine(), out chosenAns);
                 } while (!isParsed || chosenAns < 1 || chosenAns > 4);
                 ChosenAnswers.Add(chosenAns);
+                MCQ.mcqChoosenAnsIds.Add(chosenAns); // new
                 Console.WriteLine();
             }
            
@@ -99,41 +100,74 @@ namespace OOPExam
                     isParsed = int.TryParse(Console.ReadLine(), out chosenAns);
                 } while (!isParsed || chosenAns < 1 || chosenAns > 4);
                 ChosenAnswers.Add(chosenAns);
+                TrueOrFalse.TorFChoosenAnsIds.Add((chosenAns)); // new
                 Console.WriteLine();
 
 
             }
         }
-        public static int CheckAnswer(List<int> chosenAnswer)
+        #region Parts that  have Logical errors in some cases so i replaced it.
+        //public static int CheckAnswer(List<int> chosenAnswer)
+        //{
+        //    int examMarks = 0;
+        //    for (int i = 0; i < chosenAnswer.Count;i++)
+        //    {
+        //        ExamFullMark += AllMarks[i];
+        //        if (chosenAnswer[i] == CorrectAnswerIds[i])
+        //        {
+        //            examMarks += AllMarks[i];
+        //        }
+        //        else
+        //        {
+        //            WrongAnsIds.Add(i); // index of the question that you choosed a wrong ans in.
+        //        }
+
+        //    }
+        //    return examMarks;
+        //}
+        //public static string ShowMark()
+        //{
+        //    return $" Your Mark Is {CheckAnswer(ChosenAnswers)} Out Of {ExamFullMark}";
+        //} 
+
+        #endregion
+
+        //new
+        public static string showMark()
         {
-            int examMarks = 0;
-            for (int i = 0; i < chosenAnswer.Count;i++)
+            return $" Your Mark Is {MCQ.CheckAnswer(MCQ.mcqChoosenAnsIds,MCQ.mcqCorrectAnsIds)+TrueOrFalse.CheckAnswer(TrueOrFalse.TorFChoosenAnsIds,TrueOrFalse.TorFCorrectAnsIds)} Out Of {examFullMark}";
+
+        }
+        // new
+        public static void mcqWrongQuestions()
+        {
+            Console.WriteLine("Worng MCQ Questions");
+            for (int i = 0; i < MCQ.WrongAnsIds.Count; i++)
             {
-                ExamFullMark += AllMarks[i];
-                if (chosenAnswer[i] == CorrectAnswerIds[i])
+                Console.WriteLine($" {i + 1}]: {MCQ.mcqQuestions[MCQ.WrongAnsIds[i]]}");
+                for (int j = i; j < i + 1; j++)
                 {
-                    examMarks += AllMarks[i];
+                    Console.WriteLine($"{MCQ.mcqAnswerList[MCQ.WrongAnsIds[i]]}");
                 }
-                else
-                {
-                    WrongAnsIds.Add(i); // index of the question that you choosed a wrong ans in.
-                }
+                Console.WriteLine($"Your Ans was ==> {MCQ.mcqChoosenAnsIds[MCQ.WrongAnsIds[i]]}");
+                Console.WriteLine($"The Correct Ans is==> {MCQ.mcqCorrectAnsIds[MCQ.WrongAnsIds[i]]}");
+            }
+
+        }
+        //new
+        public static void TorFWrongQuestions()
+        {
+            Console.WriteLine("True Or False Wrong False");
+            for (int i = 0; i < TrueOrFalse.WrongAnsIds.Count; i++)
+            {
+                Console.WriteLine($" {i + 1}]: {TrueOrFalse.TorFQuestions[TrueOrFalse.WrongAnsIds[i]]}");
+                Console.WriteLine($"{TrueOrFalse.TorFChoices}");
+                Console.WriteLine($"Your Ans Was==>{TrueOrFalse.TorFChoosenAnsIds[TrueOrFalse.WrongAnsIds[i]]}");
+                Console.WriteLine($"The Correct Ans Was==>{TrueOrFalse.TorFCorrectAnsIds[TrueOrFalse.WrongAnsIds[i]]}");
+
 
             }
-            return examMarks;
-        }
-        public static string ShowMark()
-        {
-            return $" Your Mark Is {CheckAnswer(ChosenAnswers)} Out Of {ExamFullMark}";
-        }
-        public static void WrongQuestions()
-        {
-            for (int i = 0; i < WrongAnsIds.Count; i++)
-            {
-                Console.WriteLine($"Question number{WrongAnsIds[i]}] ");
-                Console.WriteLine($"Your Answer=> {ChosenAnswers[WrongAnsIds[i]]}");
-                Console.WriteLine($"The Correct Answer {CorrectAnswerIds[WrongAnsIds[i]]}");
-            }
+
         }
 
 

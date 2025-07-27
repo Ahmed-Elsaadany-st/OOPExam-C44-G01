@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace OOPExam
 {
     internal class ExamLogicLayer
     {
+        static Stopwatch stopwatch = new Stopwatch();
         PracticalExam practicalExam =new PracticalExam();
         FinalExam finalExam =new FinalExam();
         public  void StartCreating()
@@ -43,12 +45,12 @@ namespace OOPExam
             {
                Exam.CreatExam();
                 Console.Clear();
+                Console.WriteLine("Please Create All MCQ Questions First,Then Create True or False Questions");
+                Console.WriteLine();
                 int counter = 0;
                 do
                 {
-                    Console.WriteLine($"Create Question Number : {counter +1}");
-                    Console.WriteLine();
-
+                    Console.WriteLine($"Create Question Number : {counter +1}.....");
                     finalExam.CreatQuestion();
                     counter++;
                 } while (counter < Exam.NumberOfQuestions);
@@ -76,6 +78,7 @@ namespace OOPExam
             if (YesOrNo.Equals("yes", StringComparison.OrdinalIgnoreCase))
             {
                 Exam.showExam();
+                stopwatch.Start();
             }
 
         }
@@ -100,7 +103,35 @@ namespace OOPExam
             if (YesOrNo.Equals("yes", StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine(Exam.ShowMark());
+                stopwatch.Stop();
+                Console.WriteLine("Exam ended.");
+                Console.WriteLine($"Time taken: {stopwatch.Elapsed.TotalMinutes:F2} minutes.");
             }
         }
+        //public static void ShowWrongQuestions()
+        //{
+        //    string YesOrNo;
+        //    bool isValid = false;
+
+        //    do
+        //    {
+        //        Console.WriteLine("Do you want to Show your Wrong Answers ? (yes or no): ");
+        //        YesOrNo = Console.ReadLine()?.Trim().ToLower();
+
+        //        isValid = YesOrNo == "yes" || YesOrNo == "no";
+
+        //        if (!isValid)
+        //        {
+        //            Console.WriteLine("Invalid input. Please enter 'yes' or 'no'.");
+        //        }
+
+        //    } while (!isValid);
+        //    if (YesOrNo.Equals("yes", StringComparison.OrdinalIgnoreCase))
+        //    {
+        //        //Exam.WrongQuestions();
+        //    }
+
+
+        //}
     }
 }

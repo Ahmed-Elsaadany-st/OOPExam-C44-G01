@@ -20,6 +20,7 @@ namespace OOPExam
         
         public  void CreatQuestion()
         {
+            Console.WriteLine();
             bool flag=false;
             int input;
             do

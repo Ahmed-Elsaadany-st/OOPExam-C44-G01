@@ -4,12 +4,13 @@
     {
         static void Main(string[] args)
         {
-            ExamLogicLayer examLogicLayer = new ExamLogicLayer();
+            ExamLogicLayer examLogicLayer = new ExamLogicLayer(); 
           examLogicLayer.StartCreating();
             Console.Clear();
            ExamLogicLayer.StartExam();
             Console.Clear();
             ExamLogicLayer.ShowYourMark();
+            //ExamLogicLayer.ShowWrongQuestions();
         }
     }
 }

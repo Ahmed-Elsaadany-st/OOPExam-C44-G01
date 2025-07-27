@@ -22,10 +22,9 @@ namespace OOPExam
         public static List<int> AllMarks { get; set; } = new List<int>();
 
         // storing the marks so i can give full mark when i compare correct ans with choesn ans and find it true.
-
+        public static List<int>WrongAnsIds { get; set; } =new List<int>();
 
         public static int ExamFullMark = 0;
-        public static int ExamMarks = 0;
 
 
 
@@ -118,6 +117,10 @@ namespace OOPExam
                 {
                     examMarks += AllMarks[i];
                 }
+                else
+                {
+                    WrongAnsIds.Add(i+1); // Number of the question that you choosed a wrong ans in.
+                }
 
             }
             return examMarks;
@@ -126,6 +129,15 @@ namespace OOPExam
         {
             return $" Your Mark Is {CheckAnswer(ChosenAnswers)} Out Of {ExamFullMark}";
         }
+        //public static void WrongQuestions()
+        //{
+        //    //for (int i = 0; i < WrongAnsIds.Count; i++)
+        //    //{
+        //    //    Console.WriteLine($"Question number{WrongAnsIds[i]}] ");
+        //    //    Console.WriteLine($"Your Answer=> {ChosenAnswers[WrongAnsIds[i]]}");
+        //    //    Console.WriteLine($"The Correct Answer {ChosenAnswers[WrongAnsIds[i]]}");
+        //    //}
+        //}
 
 
 
